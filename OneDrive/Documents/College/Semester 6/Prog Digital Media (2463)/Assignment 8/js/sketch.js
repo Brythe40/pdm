@@ -9,6 +9,13 @@ let spawnX;
 let spawnY;
 
 Tone.start();
+
+let sounds = new Tone.Players({
+  "Splat": "assets/Splat.mp3",
+  "Missed": "assets/Missed.mp3",
+  "Victory": "assets/Victory.wav"
+}).toDestination();
+
 let synth = new Tone.PolySynth().toDestination();
 let memSynth = new Tone.MembraneSynth().toDestination();
 const vol = new Tone.Volume(-15).toDestination();
@@ -37,11 +44,6 @@ let bass = new Tone.Sequence((time, note) => {
   }
 }, ['E2', 'F2', null, null, null, null, 'A2', 'C2']);
 
-let sounds = new Tone.Players({
-  "Splat": "assets/Splat.mp3",
-  "Missed": "assets/Missed.mp3",
-  "Victory": "assets/Victory.wav"
-}).toDestination();
 
 Tone.Transport.bpm.value = 100;
 
