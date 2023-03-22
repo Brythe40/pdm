@@ -39,7 +39,7 @@ let bass = new Tone.Sequence((time, note) => {
 let sounds = new Tone.Players({
   "splat": "assets/splat.mp3",
   "missed": "assets/missed.mp3",
-  "victory": "assets/victory.wav",
+  "victory": "assets/victory.wav"
 }).toDestination();
 
 Tone.Transport.bpm.value = 100;
