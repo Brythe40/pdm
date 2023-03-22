@@ -40,7 +40,7 @@ let sounds = new Tone.Players({
   "splat": "assets/splat.mp3",
   "missed": "assets/missed.mp3",
   "victory": "assets/victory.wav",
-})
+}).toDestination();
 
 Tone.Transport.bpm.value = 100;
 
@@ -59,8 +59,6 @@ function preload(){
   memSynth.volume.value = -15;
   sounds.player("victory").volume.value = -15;
   Tone.Transport.start();
-
-  sounds.toDestination();
 }
 
 function setup() {
