@@ -8,6 +8,7 @@ let isSquised = false;
 let spawnX;
 let spawnY;
 
+Tone.start();
 let synth = new Tone.PolySynth().toDestination();
 let memSynth = new Tone.MembraneSynth().toDestination();
 const vol = new Tone.Volume(-15).toDestination();
