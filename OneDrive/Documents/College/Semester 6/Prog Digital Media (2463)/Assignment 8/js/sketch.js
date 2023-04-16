@@ -55,12 +55,12 @@ let game = { score: 0, maxScore: 0, maxTime: 30, elapsedTime: 0, totalSprites: 1
 function preload(){
   spriteSheet = loadImage("assets/bugSprite.png");
 
+  sounds.toDestination();
+
   synth.volume.value = -15;
   memSynth.volume.value = -15;
   sounds.player("victory").volume.value = -15;
   Tone.Transport.start();
-
-  sounds.toDestination();
 }
 
 function setup() {
