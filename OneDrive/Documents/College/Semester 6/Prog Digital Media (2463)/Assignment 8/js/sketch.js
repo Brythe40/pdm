@@ -8,14 +8,6 @@ let isSquised = false;
 let spawnX;
 let spawnY;
 
-Tone.start();
-
-let sounds = new Tone.Players({
-  "Splat": "assets/Splat.mp3",
-  "Missed": "assets/Missed.mp3",
-  "Victory": "assets/Victory.wav"
-}).toDestination();
-
 let synth = new Tone.PolySynth().toDestination();
 let memSynth = new Tone.MembraneSynth().toDestination();
 const vol = new Tone.Volume(-15).toDestination();
@@ -44,6 +36,11 @@ let bass = new Tone.Sequence((time, note) => {
   }
 }, ['E2', 'F2', null, null, null, null, 'A2', 'C2']);
 
+let sounds = new Tone.Players({
+  "splat": "assets/splat.mp3",
+  "missed": "assets/missed.mp3",
+  "victory": "assets/victory.wav",
+})
 
 Tone.Transport.bpm.value = 100;
 
@@ -60,8 +57,10 @@ function preload(){
 
   synth.volume.value = -15;
   memSynth.volume.value = -15;
-  sounds.player("Victory").volume.value = -15;
+  sounds.player("victory").volume.value = -15;
   Tone.Transport.start();
+
+  sounds.toDestination();
 }
 
 function setup() {
@@ -177,7 +176,7 @@ function draw() {
 function keyPressed(){
   switch(game.state){
     case GameState.Start:
-      sounds.player("Victory").connect(vol).start();
+      sounds.player("victory").connect(vol).start();
       game.state = GameState.Playing;
       break;
     case GameState.GameOver:
@@ -194,36 +193,36 @@ function mousePressed(){
         let contains = bugs[i].contains(mouseX, mouseY);
         if(contains && game.state == GameState.Playing){
           if(bugs[i].moving != 0){
-            sounds.player("Splat").start();
+            sounds.player("splat").start();
             bugs[i].stop();
             game.score += 1;
           }
         } else if(!contains && game.state == GameState.Playing){
-          sounds.player("Missed").start();
+          sounds.player("missed").start();
         }
       }
       for(let i = 0; i < bugsTwo.length; i++){
         let containsTwo = bugsTwo[i].contains(mouseX, mouseY);
         if(containsTwo && game.state == GameState.Playing){
           if(bugsTwo[i].moving != 0){
-            sounds.player("Splat").start();
+            sounds.player("splat").start();
             bugsTwo[i].stop();
             game.score += 1;
           }
         } else if(!containsTwo && game.state == GameState.Playing){
-          sounds.player("Missed").start();
+          sounds.player("missed").start();
         }
       }
       for(let i = 0; i < bugsThree.length; i++){
         let containsThree = bugsThree[i].contains(mouseX, mouseY);
         if(containsThree && game.state == GameState.Playing){
           if(bugsThree[i].moving != 0){
-            sounds.player("Splat").start();
+            sounds.player("splat").start();
             bugsThree[i].stop();
             game.score += 1;
           }
         } else if(!containsThree && game.state == GameState.Playing){
-          sounds.player("Missed").start();
+          sounds.player("missed").start();
         }
       }
       break;
