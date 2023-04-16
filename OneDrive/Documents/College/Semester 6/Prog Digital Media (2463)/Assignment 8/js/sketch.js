@@ -68,6 +68,8 @@ function setup() {
   imageMode(CENTER);
   angleMode(DEGREES);
 
+  sounds.toDestination();
+
 
  spriteSheet.loadPixels();
  let pixels = spriteSheet.pixels;
